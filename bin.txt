@@ -1,0 +1,212 @@
+client.js
+
+// const socket = io('http://localhost:8000');
+
+// const form = document.getElementById('send-container');
+// const messageInput = document.getElementById('messageInp')
+// const messageContainer = document.querySelector(".container")
+
+// const name = prompt("Enter your name to join ");
+// socket.emit('new-user-joined', name);
+
+
+// const name = prompt("Enter your name to join ");
+
+// const socket = io('http://localhost:8000');
+
+// const form = document.getElementById('send-container');
+// const messageInput = document.getElementById('messageInp')
+// const messageContainer = document.querySelector(".container")
+
+// const append = (message, position) => {
+//     const messageElement = document.createElement('div');
+//     messageElement.innerText = message;
+//     messageElement.classList.add('message'); 
+//     messageElement.classList.add(position);
+//     messageContainer.append(messageElement);
+// }
+
+// form.addEventListener('submit',(e)=>{
+//     e.preventDefault();
+//     const message = messageInput.value;
+//     append(`You: ${message}`,'right');
+//     socket.emit('send',message);
+//     messageInput.value = ''
+// })
+
+// socket.emit('new-user-joined', name);
+
+// socket.on('receive', data => {
+//     const element = document.createElement('div');
+//     element.innerText = `${data.name}: ${data.message}`;
+//     messageContainer.append(element);
+// });
+
+// socket.on('user-joined', name => {
+//     append(`${name} joined the chat`, 'right')
+// });
+
+// socket.on('receive', data => {
+//     append(`${data.name}:${data.message} `, 'left')
+// });
+
+
+// const socket = io('http://localhost:8000'); // connect first!
+
+// const name = prompt("Enter your name to join "); // ask after connection
+
+// const form = document.getElementById('send-container');
+// const messageInput = document.getElementById('messageInp');
+// const messageContainer = document.querySelector(".container");
+
+// const append = (message, position) => {
+//     const messageElement = document.createElement('div');
+//     messageElement.innerText = message;
+//     messageElement.classList.add('message'); 
+//     messageElement.classList.add(position);
+//     messageContainer.append(messageElement);
+// }
+
+// form.addEventListener('submit',(e)=>{
+//     e.preventDefault();
+//     const message = messageInput.value;
+//     append(`You: ${message}`, 'right');
+//     socket.emit('send', message);
+//     messageInput.value = '';
+// });
+
+// // ✅ Call after socket connects
+// socket.emit('new-user-joined', name);
+
+// socket.on('user-joined', name => {
+//     append(`${name} joined the chat`, 'right');
+// });
+
+// socket.on('receive', data => {
+//     append(`${data.name}: ${data.message}`, 'left');
+// });
+
+
+// const socket = io('http://localhost:8000');
+
+// // Get name from localStorage or prompt
+// const name = localStorage.getItem('lumora-user') || prompt("Enter your name to join");
+
+// // DOM Elements
+// const form = document.getElementById('send-container');
+// const messageInput = document.getElementById('messageInp');
+// const messageContainer = document.querySelector('.container');
+
+// // Function to append messages
+// const append = (message, position) => {
+//   const messageElement = document.createElement('div');
+//   messageElement.innerText = message;
+//   messageElement.classList.add('message', position);
+//   messageContainer.append(messageElement);
+//   messageContainer.scrollTop = messageContainer.scrollHeight; // auto scroll to latest
+// };
+
+// // Emit user joined event
+// socket.emit('new-user-joined', name);
+
+// // Listen for server events
+// socket.on('user-joined', name => {
+//   append(`${name} joined the chat`, 'left');
+// });
+
+// socket.on('receive', data => {
+//   append(`${data.name}: ${data.message}`, 'left');
+// });
+
+// socket.on('user-left', name => {
+//   append(`${name} left the chat`, 'left');
+// });
+
+// // Send message
+// form.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   const message = messageInput.value;
+//   append(`You: ${message}`, 'right');
+//   socket.emit('send', message);
+//   messageInput.value = '';
+// });
+
+index.html
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumora</title>
+    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script defer src="js/client.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <img class="logo" src="lumora logo.png" alt="" srcset="">
+    </nav>
+    <div class="container">
+        
+    </div>
+
+    <div class="send">
+        <form action="#" id="send-container">
+            <input type="text" name="messageInp" id="messageInp">
+            <button class="btn" type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html> -->
+
+index.js
+//node server
+// const io = require('socket.io')(8000)
+
+// const users = {};
+// io.on('connection', socket => {
+//     socket.on('new-user-joined', name => {
+//         console.log("new user", name)
+//         users[socket.id] = name;
+//         socket.broadcast.emit('user-joined', name);
+//     });
+
+//     socket.on('send', message => {
+        
+//         socket.broadcast.emit('receive', { message: message,
+//              name: users[socket.id] });
+//     });
+// });
+
+
+// const io = require('socket.io')(8000, {
+//     cors: {
+//       origin: "*",
+//       methods: ["GET", "POST"]
+//     }
+//   });
+  
+//   const users = {};
+  
+//   io.on('connection', socket => {
+  
+//     socket.on('new-user-joined', name => {
+//       users[socket.id] = name;
+//       socket.broadcast.emit('user-joined', name);
+//     });
+  
+//     socket.on('send', message => {
+//       socket.broadcast.emit('receive', {
+//         message: message,
+//         name: users[socket.id]
+//       });
+//     });
+  
+//     socket.on('disconnect', () => {
+//       if (users[socket.id]) {
+//         socket.broadcast.emit('user-left', users[socket.id]);
+//         delete users[socket.id];
+//       }
+//     });
+//   });
+  
