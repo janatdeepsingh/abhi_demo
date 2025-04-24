@@ -1,42 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumora</title>
-    <link rel="icon" type="image/png" href="./lumora logo2.png" />
-    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
-    <script defer src="./client.js"></script>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-    <!-- <nav>
-        <img class="logo" src="lumora logo3.png" alt="Lumora Logo">
-    </nav> -->
-    <nav class="navbar">
-    <div class="navbar-left">
-       
-        <span class="app-name">Lumora</span>
-    </div>
-</nav>
-    <div class="container">
-        
-    </div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lumora - Login</title>
+  <link rel="icon" type="image/png" href="./lumora logo2.png" />
 
-    <div class="send">
-        <form action="#" id="send-container">
-            <!-- <input type="text" name="messageInp" id="messageInp" required> -->
-            <input type="text" name="messageInp" id="messageInp" placeholder="Type your message..." autocomplete="off" />
-            <button class="btn" type="submit">Send</button>
-        </form>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>Welcome to Lumora</h2>
+      <form id="auth-form">
+        <input type="text" id="username" placeholder="Enter your name" required />
+        <button type="submit" class="btn full">Join Chat</button>
+      </form>
     </div>
-    <div class="about">
-        <h1>Welcome to Lumora</h1>
-        <p>
-            Lumora is a lightweight, real-time chat app designed for seamless conversations and complete privacy. Your messages are never stored — they exist only while you're connected. Once you leave, everything vanishes, just like it should. No history, no clutter, no distractions. Just pure, instant messaging.
-        
-        </p>
-      </div>
-      
+  </div>
+
+  <script>
+    const form = document.getElementById('auth-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('username').value.trim();
+      if (name !== '') {
+        localStorage.setItem('lumora-user', name);
+        window.location.href = "index.html"; 
+      }
+    });
+  </script>
 </body>
 </html>
