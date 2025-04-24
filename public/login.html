@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lumora - Login</title>
+  <link rel="icon" type="image/png" href="./lumora logo2.png" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2>Welcome to Lumora</h2>
+      <form id="auth-form">
+        <input type="text" id="username" placeholder="Enter your name" required />
+        <button type="submit" class="btn full">Join Chat</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('auth-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('username').value.trim();
+      if (name !== '') {
+        localStorage.setItem('lumora-user', name);
+        window.location.href = "index.html"; 
+      }
+    });
+  </script>
+</body>
+</html>
