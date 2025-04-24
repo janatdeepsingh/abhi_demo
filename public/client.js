@@ -1,7 +1,7 @@
 
 const audio = new Audio('./notification.wav');
 
-const socket = io('http://localhost:8000'); 
+const socket = io(); 
 
 const name = localStorage.getItem('lumora-user') || prompt("Enter your name to join");
 
